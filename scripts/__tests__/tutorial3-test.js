@@ -3,18 +3,34 @@ jest.dontMock('../tutorial3');
 var React = require('react');
 var ReactDOM = require('react-dom');
 var TestUtils = require('react-addons-test-utils');
-import { CommentList, CommentForm } from '../tutorial2';
 
 describe("CommentBox", function() {
-  it("renders a comment box with comment list and comment form", function() {
-    var CommentBox = require('../tutorial3');
-    var commentBox = TestUtils.renderIntoDocument(
+
+  var CommentBox, commentBox;
+  beforeEach(function() {
+    CommentBox = require('../tutorial3');
+  });
+
+  it("renders a comment box", function() {
+    commentBox = TestUtils.renderIntoDocument(
       <CommentBox />
     );
 
     var box = ReactDOM.findDOMNode(commentBox);
+    var h1 = TestUtils.findRenderedDOMComponentWithTag(commentBox, 'h1');
 
     expect(box.getAttribute("class")).toEqual("commentBox");
-    expect(TestUtils.findRenderedDOMComponentWithTag(commentBox, 'h1')).toEqual(true);
+    expect(h1.textContent).toEqual("Comments");
+  });
+
+  it("contains CommentList", function() {
+    var CommentList = require('../tutorial2').CommentList;
+    
+    var renderer = TestUtils.createRenderer();
+    renderer.render(<CommentBox />);
+    var result = renderer.getRenderOutput();
+
+    expect(result.type).toBe('div');
+    expect(result.props.children[1]).toEqual(<CommentList />);
   });
 });
