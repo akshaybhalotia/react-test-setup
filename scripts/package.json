@@ -4,7 +4,7 @@
   "description": "My first reactive tests",
   "main": "example.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose --testRunner='<rootDir>/node_modules/jest-cli/src/testRunners/jasmine/jasmine2.js'"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +28,8 @@
     ]
   },
   "dependencies": {
+    "jquery": "^2.2.0",
+    "marked": "^0.3.5",
     "react": "^0.14.6",
     "react-dom": "^0.14.6"
   }

@@ -33,4 +33,15 @@ describe("CommentBox", function() {
     expect(result.type).toBe('div');
     expect(result.props.children[1]).toEqual(<CommentList />);
   });
+
+  it("contains CommentForm", function() {
+    var CommentForm = require('../tutorial2').CommentForm;
+    
+    var renderer = TestUtils.createRenderer();
+    renderer.render(<CommentBox />);
+    var result = renderer.getRenderOutput();
+
+    expect(result.type).toBe('div');
+    expect(result.props.children[2]).toEqual(<CommentForm />);
+  });
 });

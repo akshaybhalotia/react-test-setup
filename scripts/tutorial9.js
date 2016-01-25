@@ -1,3 +1,7 @@
+var React = require('react');
+var CommentList = require('./tutorial5');
+var CommentForm = require('./tutorial2').CommentForm;
+
 var CommentBox = React.createClass({
   render: function() {
     return (
@@ -10,7 +14,8 @@ var CommentBox = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <CommentBox data={data} />,
-  document.getElementById('content')
-);
+module.exports = CommentBox;
+// ReactDOM.render(
+//   <CommentBox data={data} />,
+//   document.getElementById('content')
+// );

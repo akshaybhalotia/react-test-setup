@@ -9,8 +9,11 @@
  * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+var React = require('react');
+var marked = require('marked');
+var $ = require('jquery');
 
-var Comment = React.createClass({
+export var Comment = React.createClass({
   rawMarkup: function() {
     var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
     return { __html: rawMarkup };
@@ -28,7 +31,7 @@ var Comment = React.createClass({
   }
 });
 
-var CommentBox = React.createClass({
+export var CommentBox = React.createClass({
   loadCommentsFromServer: function() {
     $.ajax({
       url: this.props.url,
@@ -82,7 +85,7 @@ var CommentBox = React.createClass({
   }
 });
 
-var CommentList = React.createClass({
+export var CommentList = React.createClass({
   render: function() {
     var commentNodes = this.props.data.map(function(comment) {
       return (
@@ -99,7 +102,7 @@ var CommentList = React.createClass({
   }
 });
 
-var CommentForm = React.createClass({
+export var CommentForm = React.createClass({
   getInitialState: function() {
     return {author: '', text: ''};
   },
@@ -140,7 +143,7 @@ var CommentForm = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <CommentBox url="/api/comments" pollInterval={2000} />,
-  document.getElementById('content')
-);
+// ReactDOM.render(
+//   <CommentBox url="/api/comments" pollInterval={2000} />,
+//   document.getElementById('content')
+// );

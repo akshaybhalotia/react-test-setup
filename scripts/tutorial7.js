@@ -1,3 +1,6 @@
+var React = require('react');
+var marked = require('marked');
+
 var Comment = React.createClass({
   rawMarkup: function() {
     var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
@@ -15,3 +18,5 @@ var Comment = React.createClass({
     );
   }
 });
+
+module.exports = Comment;

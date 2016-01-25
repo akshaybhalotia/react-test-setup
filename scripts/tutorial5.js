@@ -1,3 +1,5 @@
+var React = require('react');
+
 var CommentList = React.createClass({
   render: function() {
     return (
@@ -8,3 +10,5 @@ var CommentList = React.createClass({
     );
   }
 });
+
+module.exports = CommentList;

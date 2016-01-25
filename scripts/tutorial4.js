@@ -1,3 +1,5 @@
+var React = require('react');
+
 var Comment = React.createClass({
   render: function() {
     return (
@@ -10,3 +12,5 @@ var Comment = React.createClass({
     );
   }
 });
+
+module.exports = Comment;
